@@ -1,0 +1,7 @@
+{
+	"title": "Медовая лавка",
+	"winnieName": "Винни-Пух",
+	"tigger":"Тигра",
+	"piglet":"Пятачок",
+	"honey": "{amount} банки {manufacturer}"
+}

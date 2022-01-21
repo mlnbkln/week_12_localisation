@@ -1,0 +1,13 @@
+{
+	"title": "Honey shop",
+	"winnieName": "Winnie the Pooh",
+	"tigger": "Tigger",
+	"piglet": "Piglet",
+	"honey": "{amount} Jars {manufacturer}",
+    	"@honey": {
+    		"placeholders" : {
+    			"amount": {},
+    			"manufacturer": {}
+    		}
+    	}
+}
