@@ -14,5 +14,14 @@
           "placeholders": {
             "count": {}
           }
+        },
+    "itemTotal": "{value}",
+      "@itemTotal": {
+        "placeholders": {
+          "value": {
+            "type": "double",
+            "format": "currency"
+          }
         }
+      }
 }

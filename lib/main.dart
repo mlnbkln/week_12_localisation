@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -50,6 +51,7 @@ class MyHomeWidget extends StatelessWidget {
 // Если текущая локаль en
     debugPrint(activeLocale.languageCode); // => en
     var translation = AppLocalizations.of(context)!;
+    var message = translation.itemTotal;
       return Scaffold(
         appBar: AppBar(
           title: Text(translation.title),
@@ -79,7 +81,7 @@ class MyHomeWidget extends StatelessWidget {
                         ),
                         Text('Jan 17, 2022'),
                         Text(translation.jarCount(4) +
-                            translation.honey(" 'Bearhoney'") + ' - USD20'),
+                            translation.honey(" 'Bearhoney' ") + message(20)),
                       ],
                     ),
                   ],
@@ -108,7 +110,7 @@ class MyHomeWidget extends StatelessWidget {
                         ),
                         Text('Jan 16, 2022'),
                         Text(translation.jarCount(5) +
-                            translation.honey(" 'Tiggerhoney'") + ' - USD25'),
+                            translation.honey(" 'Tiggerhoney' ") + message(25)),
                       ],
                     ),
                   ],
@@ -137,7 +139,7 @@ class MyHomeWidget extends StatelessWidget {
                         ),
                         Text('Jan 18, 2022'),
                         Text(translation.jarCount(3) +
-                            translation.honey(" 'Piglethoney'") + ' - USD15'),
+                            translation.honey(" 'Piglethoney' ") + message(15)),
                       ],
                     ),
                   ],
