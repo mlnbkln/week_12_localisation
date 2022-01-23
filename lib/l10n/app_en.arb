@@ -3,11 +3,16 @@
 	"winnieName": "Winnie the Pooh",
 	"tigger": "Tigger",
 	"piglet": "Piglet",
-	"honey": "{amount} Jars {manufacturer}",
-    	"@honey": {
-    		"placeholders" : {
-    			"amount": {},
-    			"manufacturer": {}
-    		}
-    	}
+	"honey": "{manufacturer}",
+        	"@honey": {
+        		"placeholders" : {
+        			"manufacturer": {}
+        			}
+        		},
+    "jarCount": "{count,plural, =0{No jars} =1{1 jar} other{{count} jars}}",
+        "@jarCount": {
+          "placeholders": {
+            "count": {}
+          }
+        }
 }

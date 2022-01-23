@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -8,8 +9,11 @@ void main() {
   runApp(const MyApp());
 }
 
+
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +46,9 @@ class MyHomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Locale activeLocale = Localizations.localeOf(context);
+// Если текущая локаль en
+    debugPrint(activeLocale.languageCode); // => en
     var translation = AppLocalizations.of(context)!;
       return Scaffold(
         appBar: AppBar(
@@ -71,7 +78,8 @@ class MyHomeWidget extends StatelessWidget {
                           style: TextStyle(fontSize: 20),
                         ),
                         Text('Jan 17, 2022'),
-                        Text('4 Jars - USD20'),
+                        Text(translation.jarCount(4) +
+                            translation.honey(" 'Bearhoney'") + ' - USD20'),
                       ],
                     ),
                   ],
@@ -99,7 +107,8 @@ class MyHomeWidget extends StatelessWidget {
                           style: TextStyle(fontSize: 20),
                         ),
                         Text('Jan 16, 2022'),
-                        Text('5 Jars - USD25'),
+                        Text(translation.jarCount(5) +
+                            translation.honey(" 'Tiggerhoney'") + ' - USD25'),
                       ],
                     ),
                   ],
@@ -127,7 +136,8 @@ class MyHomeWidget extends StatelessWidget {
                           style: TextStyle(fontSize: 20),
                         ),
                         Text('Jan 18, 2022'),
-                        Text('3 Jars - USD15'),
+                        Text(translation.jarCount(3) +
+                            translation.honey(" 'Piglethoney'") + ' - USD15'),
                       ],
                     ),
                   ],

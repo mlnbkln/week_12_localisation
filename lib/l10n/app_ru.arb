@@ -3,5 +3,6 @@
 	"winnieName": "Винни-Пух",
 	"tigger":"Тигра",
 	"piglet":"Пятачок",
-	"honey": "{amount} банки {manufacturer}"
+	"honey": "{manufacturer}",
+	"jarCount": "{count,plural, =0{Нет банок} =1{{count} 1 банка} =2{2 банки} few{{count} банки} many{{count} банок} other{{count} банок}"
 }
