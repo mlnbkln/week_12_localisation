@@ -5,5 +5,6 @@
 	"piglet":"Пятачок",
 	"honey": "{manufacturer}",
 	"jarCount": "{count,plural, =0{Нет банок} =1{{count} банка} =2{2 банки} few{{count} банки} many{{count} банок} other{{count} банок}",
-	"itemTotal": "{value}"
+	"jarTotal": "{value}",
+	"purchase": "Куплено {date}"
 }

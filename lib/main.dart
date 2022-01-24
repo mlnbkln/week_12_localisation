@@ -6,6 +6,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
+
+
 void main() {
   runApp(const MyApp());
 }
@@ -40,6 +42,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+
 class MyHomeWidget extends StatelessWidget {
   const MyHomeWidget({
     Key? key,
@@ -51,7 +55,10 @@ class MyHomeWidget extends StatelessWidget {
 // Если текущая локаль en
     debugPrint(activeLocale.languageCode); // => en
     var translation = AppLocalizations.of(context)!;
-    var message = translation.itemTotal;
+    var message = translation.jarTotal;
+    DateTime date = DateTime.parse("2021-01-17");
+    DateTime date1 = DateTime.parse("2021-01-16");
+    DateTime date2 = DateTime.parse("2021-01-18");
       return Scaffold(
         appBar: AppBar(
           title: Text(translation.title),
@@ -79,7 +86,7 @@ class MyHomeWidget extends StatelessWidget {
                           translation.winnieName,
                           style: TextStyle(fontSize: 20),
                         ),
-                        Text('Jan 17, 2022'),
+                        Text(translation.purchase(date)),
                         Text(translation.jarCount(4) +
                             translation.honey(" 'Bearhoney' ") + message(20)),
                       ],
@@ -108,7 +115,7 @@ class MyHomeWidget extends StatelessWidget {
                           translation.tigger,
                           style: TextStyle(fontSize: 20),
                         ),
-                        Text('Jan 16, 2022'),
+                        Text(translation.purchase(date1)),
                         Text(translation.jarCount(5) +
                             translation.honey(" 'Tiggerhoney' ") + message(25)),
                       ],
@@ -137,7 +144,7 @@ class MyHomeWidget extends StatelessWidget {
                           translation.piglet,
                           style: TextStyle(fontSize: 20),
                         ),
-                        Text('Jan 18, 2022'),
+                        Text(translation.purchase(date2)),
                         Text(translation.jarCount(3) +
                             translation.honey(" 'Piglethoney' ") + message(15)),
                       ],
@@ -151,3 +158,4 @@ class MyHomeWidget extends StatelessWidget {
       );
   }
 }
+
