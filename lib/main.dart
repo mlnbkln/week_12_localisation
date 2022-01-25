@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'applocale.dart';
 
 
 
@@ -20,24 +23,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: [
-        const Locale('en', ''),
-        const Locale('ru', ''),
-      ],
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
+    return ChangeNotifierProvider(
+      create: (context) => AppLocale(),
+      child: Consumer<AppLocale>(
+          builder: (context, locale, child) {
+            return MaterialApp(
+              localizationsDelegates: [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.supportedLocales,
+              locale: locale.locale,
+              theme: ThemeData(
+                primarySwatch: Colors.teal,
+              ),
+              initialRoute: '/',
+              routes: {
+                '/': (context) => MyHomeWidget(),
+              },
+            );
+          }
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => MyHomeWidget(),
-      },
     );
   }
 }
@@ -53,6 +61,7 @@ class MyHomeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Locale activeLocale = Localizations.localeOf(context);
 // Если текущая локаль en
+    var language = Provider.of<AppLocale>(context);
     debugPrint(activeLocale.languageCode); // => en
     var translation = AppLocalizations.of(context)!;
     var message = translation.jarTotal;
@@ -66,47 +75,37 @@ class MyHomeWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold
                 ),
           ),
-          actions: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(right: 12.0),
-              child: SizedBox(
-                width: 50,
-                height: 45,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text("EN"),
-                  style: ElevatedButton.styleFrom(
-                    shape: CircleBorder(
-                      side: BorderSide(width: 1.0, color: Colors.blueGrey),
-                    ),
-                    primary: Colors.cyan,
-                    onPrimary: Colors.blueGrey,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(right: 12.0),
-              child: SizedBox(
-                width: 50,
-                height: 45,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text("RU"),
-                  style: ElevatedButton.styleFrom(
-                    shape: CircleBorder(
-                      side: BorderSide(width: 1.0, color: Colors.blueGrey),
-                    ),
-                    primary: Colors.cyan,
-                    onPrimary: Colors.blueGrey,
-                  ),
-                ),
-              ),
-            ),
-          ]),
-      body: Column(
+         ),
+     body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+           Row(
+       mainAxisAlignment: MainAxisAlignment.center,
+       children: [
+          Text('EN',
+            style: TextStyle(
+                color: Colors.cyan,
+                fontWeight: FontWeight.bold,
+                fontSize: 15),
+          ),
+          Switch(
+            inactiveThumbColor: Colors.blueGrey,
+            inactiveTrackColor: Colors.blueGrey,
+            activeColor: Colors.cyan,
+            activeTrackColor: Colors.cyan,
+            onChanged: (bool value) {
+              value == true ? language.changeLocale(Locale('ru')) : language.changeLocale(Locale('en'));
+            },
+            value: language.locale == Locale('en') ? false : true,
+          ),
+          Text('RU',
+            style: TextStyle(
+                color: Colors.blueGrey,
+                fontWeight: FontWeight.bold,
+                fontSize: 15),
+          ),
+   ],
+           ),
           Card(
             elevation: 5,
             child: Padding(
